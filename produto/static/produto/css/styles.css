@@ -1,0 +1,206 @@
+
+body{
+    background-image : url('../images/bgimage.jpg');
+    /*background-size : cover; */
+   /*background-repeat: no-repeat; */
+}
+.jumbobg{
+    background: lightcoral;
+
+}
+.nav-color {
+    size:  40px;
+    color : white;
+    background-color: #dc3545;
+
+}
+
+.nav-color-black {
+    background-color : #343a40;
+    color: red;
+}
+
+.jumbotron {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.media img {
+    width: 80px;
+    margin-bottom: 15px;
+    border-radius: 6%;
+}
+
+.altura-da-linha {
+    line-height: 0.5;
+}
+
+blockquote {
+    border-left: 8px solid #ccc;
+    margin: 0.5em 10px;
+    padding: 0.5em 10px;
+}
+
+.cabecalho-black{
+    color: black;
+}
+
+.letra-red{
+    color:red;
+}
+.letra-white{
+    color: white;
+
+}
+.navbar-color{
+    color : gray;
+}
+
+.fade-in {
+    animation: fadeIn 1.0s ease forwards;
+}
+a:link { color: #6c757d; }
+
+.dada{
+    color : #6c757d;
+}
+
+.left{
+    text-align:left;
+    float:left;
+}
+.carousel-caption {
+    background: rgba(255,255, 255, 0.65);
+}
+
+
+.footer {
+    background-color: #333;
+    color: #efefef;
+    padding: 30px 0;
+}
+
+.footer a {
+    color: #639bcf;
+}
+
+.footer a:hover {
+    color: #d8e6f3;
+}
+
+
+/* ---------------------------------------------------- */
+
+.picture {
+    width: 600px;
+}
+.employee{
+    width: 100px;
+}
+@media (max-width: 480px) {
+    .jumbotron h2 {
+        padding-left: 15px;
+        font-size: 25px;
+    }
+    .jumbotron p {
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 17px;
+    }
+
+    .media img {
+        width: 90px;
+        margin-bottom: 6px;
+        border-radius: 50%;
+    }
+    .media-body h5 {
+        padding-top: 18px;
+        font-size: 15px;
+    }
+    .texto-media-body {
+        display: none;
+    }
+    blockquote p {
+        font-size: 15px;
+    }
+    h4 {
+        font-size: 19px;
+    }
+    h5 {
+        font-size: 16px;
+    }
+    .titulo-excursoes {
+        font-size: 15px;
+    }
+}
+
+/* Texto que desliza*/
+.slide-left {
+    width:100%;
+    overflow:hidden;
+}
+.slide-left p {
+    animation: slide-left 10s;
+}
+
+@keyframes slide-left {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+/* fade in de texto no carregamento da página*/
+
+.fade-to-black {
+    margin-top: 25px;
+    font-size: 21px;
+    text-align: center;
+
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+}
+
+
+/* keyframes : keyword p/ definir animação usando "troca de estilos CSS
+definição da w3schools:
+
+
+Definition and Usage
+The @keyframes rule specifies the animation code.
+
+The animation is created by gradually changing from one set of CSS styles to another.
+
+During the animation, you can change the set of CSS styles many times.
+
+Specify when the style change will happen in percent, or with the keywords "from" and "to", which is the same as 0% and 100%. 0% is the beginning of the animation, 100% is when the animation is complete.*/
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

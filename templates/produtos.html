@@ -1,0 +1,191 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'produto/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/open-iconic/font/css/open-iconic-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/css/styles.css' %}">
+    <title>{% block titulo %}XVIDROS Vidraçaria{% endblock %}</title>
+</head>
+<body>
+<nav class="navbar ml-auto bg-light navbar-light navbar-expand-md fixed-top navbar-color">
+    <div class="container">
+        <a href="{% url 'index'%}">
+            <img src="{% static 'produto/images/logo2.png' %}" alt="logo" style="width: 80px;">
+        </a>
+            <div class="navbar navbar-nav "> <!-- mr-auto alinha à esquerda do container da nav-->
+                <a class="nav-color nav-item nav-link " href="{% url 'quem_somos'%}">Quem somos</a>
+                <a class="nav-color-black nav-item nav-link" href="{% url 'produtos' %}">Produtos</a>
+                <a class="nav-item nav-link nav-color" href="{% url 'pessoal' %}">Pessoal</a>
+                <a class="nav-item nav-link nav-color-black" href="{% url 'depoimentos' %}">Depoimentos</a>
+                <a class="nav-item nav-link nav-color" href="#contato">Contato</a>
+            </div>
+        <div>
+            <a class="nav-color nav-item nav-link oi oi-cart" href="{% url 'carrinho:exibe_produtos_e_carrinho'%}"> Carrinho</a>
+            <a class="nav-color nav-item nav-link oi oi-person" href="{% url 'produto:cadastra_produto'%}"> Admin</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jumbotron bg-dark letra-white fade-to-black">
+        <h2>Produtos</h2>
+        <p>a XVIDROS sempre trabalha em prol de fornecer a melhor solução possível para seus clientes, aplicando em seu modelo de negócio
+            as tendências trazidas com a globalização e a expansão do mercado das vidraçarias. </p>
+
+        <p> Nossos produtos são fabricados com material de altíssima qualidade, sempre buscando satisfazer da melhor forma possível nossos clientes.
+            Por anos, parcerias no exterior permitiram a observação e posterior aplicação de novas tendências em sua empresa,
+            trazidas com a globalização e a expansão do mercado das vidraçarias,
+            buscando sempre a excelência em seus serviços e produtos.</p>
+
+         <p> Nos preocupamos em prestar um trabalho sério e profissional, tendo como maior objetivo superar as expectativas
+            de nossos clientes, oferecendo sempre qualidade nos serviços prestados, um ótimo atendimento, sofisticação, pontualidade e preço justo.</p>
+
+        <p>Se por acaso ao acessar nosso portfólio algo não ficar esclarecido, <a style="color:red" href="#contato">não hesite em nos contatar!</a></p></div>
+
+    <!-- Table contendo os serviços prestados pela XVIDEOS-->
+    <div id="produtos" class="table-responsive jumbotron fade-to-black">
+        <h4>Instalação e venda</h4>
+        <p>Dentre todo o portfólio oferecido pela XVIDROS vidraçaria, em destaque ficam os seguintes produtos:</p>
+        <table id="tab1" style="width: 99%" class="table table-striped table-sm table-bordered">
+            <tbody>
+            {% for produto in vidros%}
+             {% if produto.produto.disponivel > 0%}
+            <tr>
+             <td style="display: none" class="id">{{ produto.produto.id }}</td>
+                <td width='20%' class='text-center'><img class='picture rounded-circle' src='{{ produto.produto.foto }}'></td>
+                <td width='25%' class='text-left'><a href="" data-toggle="tooltip"
+                                                     data-placement="top"
+                                                     title="{{ produto.produto.tooltip }}">{{ produto.produto.nome }}</a></td>
+                <td width="25%">
+                   <!-- <form class="mx-auto" style="width: 60px;" action ="{% url 'carrinho:adicionar_ao_carrinho' %}"
+                                      method ="POST" novalidate>
+                                    {% csrf_token %}
+                                    {{ item.form.estoque }}
+                                </form> -->
+                    <h4 class="mx-auto">
+                        Quantidade Disponível: </br>
+                                    {{ produto.produto.estoque }}
+                    </h4>
+                </td>
+                <td>
+                    <form class="mx-auto" style="width: 60px;" action ="{% url 'carrinho:adicionar_ao_carrinho' %}"
+                     method ="POST" novalidate>
+                           {% csrf_token %}
+                           {{ produto.form.estoque }}
+                     </form>
+                </td>
+                <td width="25%" class="text-center">
+                    <button style="margin-top: 0px; margin-bottom: 0px; padding-top: 3px; padding-bottom: 3px;"
+                        type="button" class="btn btn-sm btn-primary oi oi-cart adicionar">
+                             Comprar
+                            </button></td>
+            </tr>
+                {% endif %}
+            {%  endfor %}
+            </tbody>
+        </table>
+        <h2>Agente uma visita conosco, faça um orçamento e nos mostre sua ideia/necessidade!</h2>
+    </div>
+    <br>
+</div>
+
+<script src="{% static 'produto/js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'produto/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'produto/js/jquery.mask.js' %}"></script>
+<script src="{% static 'produto/js/popper.js' %}"></script>
+<script src="{% static 'produto/js/bootstrap.js' %}"></script>
+<script src="{% static 'produto/js/script.js' %}"></script>
+
+<div class='footer'>
+    <div class='container'>
+        <div class="row">
+            <div id="contato" class='col-md-3 col-sm-6'>
+                <h4>Contato</h4>
+                <p>Sugestões e dúvidas? Fale com nossos representantes</p>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-person"></span> Gina Souza</li>
+                    <li><span class="oi oi-phone"></span> (69) 98657-6582</li>
+                    <li><span class="oi oi-envelope-closed"></span> <a href='mailto:gsouza@xvidros.com.br'>gsouza@xvidros.com.br</a></li>
+                    <li><span class="oi oi-badge"></span> Gerente de vendas</li></li>
+                </ul>
+                <ul class='list-unstyled' > <!-- O elemento HTML span é um conteiner generico em linha para conteúdo fraseado , que não representa nada por natureza
+                                          (sem estilo próprio, sendo necessário uma classe para acompanhá-lo) -->
+                    <li><span class="oi oi-person"></span> Tony Montana</li>
+                    <li><span class="oi oi-phone"></span> (69) 91983-1209</li>
+                    <li><span class="oi oi-envelope-closed"></span> <a href='mailto:tmontana@xvidros.com.br'>tmontana@xvidros.com.br</a></li>
+                    <li><span class="oi oi-badge"> Diretor geral</span></li>
+                </ul>
+            </div>
+
+            <div id="endereco" class='col-md-3 col-sm-6'>
+                <h4>Localização e funcionamento</h4>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-bookmark"></span> Rua Abílio José de Mattos, 1130, Porto da Pedra - São Gonçalo, RJ</li>
+                    <li><span class="oi oi-terminal"></span> Funcionamos de 9 às 18, de segunda a sexta;
+                        <p>9 às 14 aos sábados.</p></li>
+                </ul>
+            </div>
+            <div id="vendas" class='col-md-3 col-sm-6'>
+                <h4>Agendamento de serviços e vendas</h4>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-phone"></span> (69) 3754-8898</li>
+                    <li><span class="oi oi-envelope-closed"></span><a href='mailto:vendas@xvidros.com.br'>vendas@xvidros.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'produto/js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'produto/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'produto/js/jquery.mask.js' %}"></script>
+<script src="{% static 'produto/js/popper.js' %}"></script>
+<script src="{% static 'produto/js/bootstrap.js' %}"></script>
+<script src="{% static 'produto/js/script.js' %}"></script>
+<script>
+    //ajeitar esse jqueroy. ele tá como na classe carrinho
+    $(document).ready(function() {
+        var ids_dos_produtos_no_carrinho = []
+        console.log("spacer")
+        $("#produtos").on("click", "button.adicionar", function () {
+            console.log("sheila")
+            let form = $(this).parent().prev().children('form')
+            let input = $(form).children('input.estoque')
+            if (input.val() <= 0) {
+                $(input).focus()
+                return
+            }
+            let tr = $(form).parent().parent()
+            let ind = $(tr).index()
+            let valor_id = $(this).parent().parent().children('.id').text()
+            console.log(valor_id)
+            $(form).append("<input type='hidden' name='produto_id' value='" + valor_id + "'>")
+            let url = $(form).attr('action')
+            let formData = $(form).serializeArray()
+            $.post(url, formData, function (resposta) {
+                $("#produtos").html($(resposta).html())
+
+                ids_dos_produtos_no_carrinho = recuperaIds(resposta)
+                console.log(ids_dos_produtos_no_carrinho)
+            })
+        })
+
+        function recuperaIds(resposta) {
+            var ids = $(resposta).find("td.id")
+            var ids_dos_produtos_no_carrinho = []
+            $.each( ids, function( i, val ) {
+                var id = parseInt($(val).text());
+                ids_dos_produtos_no_carrinho.push(id)
+            })
+            return ids_dos_produtos_no_carrinho
+    }
+    })
+</script>
+</body>
+</html>
+
+
+

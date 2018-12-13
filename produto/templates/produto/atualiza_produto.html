@@ -1,0 +1,231 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'produto/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/open-iconic/font/css/open-iconic-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/css/styles.css' %}">
+    <title>{% block titulo %}Cadastro de Produtos{% endblock %}</title>
+</head>
+<body>
+
+<nav class="navbar ml-auto bg-light navbar-light navbar-expand-md fixed-top navbar-color">
+    <div class="container">
+            <a href="{% url 'index'%}">
+            <img src="{% static 'produto/images/logo2.png' %}" alt="logo" style="width: 80px;">
+            </a>
+            <div class="navbar navbar-nav "> <!-- mr-auto alinha à esquerda do container da nav-->
+                <a class="nav-color nav-item nav-link " href="{% url 'quem_somos'%}">Quem somos</a>
+                <a class="nav-color-black nav-item nav-link" href="{% url 'produtos' %}">Produtos</a>
+                <a class="nav-item nav-link nav-color" href="{% url 'pessoal' %}">Pessoal</a>
+                <a class="nav-item nav-link nav-color-black" href="{% url 'depoimentos' %}">Depoimentos</a>
+                <a class="nav-item nav-link nav-color" href="#contato">Contato</a>
+            </div>
+            <div>
+                <a class="nav-color nav-item nav-link oi oi-cart" href="{% url 'carrinho:exibe_produtos_e_carrinho'%}"> Carrinho</a>
+
+            </div>
+
+    </div>
+</nav>
+
+<header style="margin-top: 55px;" class="d-none d-md-block"></header>
+
+<div style="margin-top: 55px;" class="d-block d-md-none"></div>
+
+<div class="container">
+    <div class="jumbotron fade-to-black">
+        <form id="inclusao" action ="{% url 'produto:cadastra_produto' %}" method ="POST" novalidate>
+        <div><label id="codigo"> {{ id }}</label></div>
+
+        <div class="form-group row mb-2">
+            <label for="id_categoria" class="col-lg-2 col-form-label font-weight-bold">Categoria</label>
+            <div class="col-lg-10">
+                {{ form.categoria }}
+                {% if form.categoria.errors %}
+                    <div class="alert alert-danger mb-0" style="padding-top: 2px; padding-bottom: 2px;">
+                        {% for error in form.categoria.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-group row mb-2">
+            <label for="id_nome" class="col-lg-2 col-form-label font-weight-bold">Nome</label>
+            <div class="col-lg-10">
+                {{ form.nome }}
+                {% if form.nome.errors %}
+                    <div class="alert alert-danger mb-0" style="padding-top: 2px; padding-bottom: 2px;">
+                        {% for error in form.nome.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-group row mb-2">
+            <label for="id_preco" class="col-lg-2 col-form-label font-weight-bold">Preço</label>
+            <div class="col-lg-10">
+                {{ form.preco }}
+                {% if form.preco.errors %}
+                    <div class="alert alert-danger mb-0" style="padding-top: 2px; padding-bottom: 2px;">
+                        {% for error in form.preco.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-group row mb-2">
+            <label for="id_estoque" class="col-lg-2 col-form-label font-weight-bold">Estoque</label>
+            <div class="col-lg-10">
+                {{ form.estoque }}
+                {% if form.estoque.errors %}
+                    <div class="alert alert-danger mb-0" style="padding-top: 2px; padding-bottom: 2px;">
+                        {% for error in form.estoque.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-group row mb-2">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+                <div class="custom-control custom-checkbox">
+                    {{ form.disponivel }}
+                    <label class="custom-control-label font-weight-bold" for="id_disponivel">
+                        Disponível
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mb-2">
+            <label for="id_data_de_cadastro" class="col-lg-2 col-form-label font-weight-bold">Data de Cadastro</label>
+            <div class="col-lg-3">
+                {{ form.data_de_cadastro }}
+                {% if form.data_de_cadastro.errors %}
+                    <div class="alert alert-danger mb-0" style="padding-top: 2px; padding-bottom: 2px;">
+                        {% for error in form.data_de_cadastro.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-7"></div>
+        </div>
+
+        <div class="form-group row mb-2">
+            <label for="id_tooltip" class="col-lg-2 col-form-label font-weight-bold">Descrição</label>
+            <div class="col-lg-10">
+                {{ form.tooltip }}
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="id_tooltip" class="col-lg-2 col-form-label font-weight-bold">imagem</label>
+            <div class="col-lg-10">
+                {{ form.foto }}
+                {% if form.foto.errors %}
+                    <div class="alert alert-danger mb-0" style="padding-top: 2px; padding-bottom: 2px;">
+                        {% for error in form.foto.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 20px;">
+            <div class="col-lg-10 offset-lg-2">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary oi oi-wrench">
+                    Atualiar Produto
+                </button>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+  <script src="{% static 'produto/js/jquery-3.3.1.js' %}"></script>
+
+    <script src="{% static 'produto/js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'produto/js/jquery.mask.js' %}"></script>
+
+    <script src="{% static 'produto/js/popper.js' %}"></script>
+    <script src="{% static 'produto/js/bootstrap.js' %}"></script>
+    <script src="{% static 'produto/js/script.js' %}"></script>
+<script>
+    $(document).ready(function(){
+           $("#id_data_de_cadastro").datepicker({
+{#        minDate: new Date(1950, 0, 1),#}
+{#        maxDate: new Date({{ ano_atual }}, {{ mes_atual }} - 1, {{ dia_atual }}),#}
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+        nextText: 'Próximo',
+        prevText: 'Anterior',
+        showOn: "focus",
+    });
+
+    $("#id_data_de_cadastro").mask("00/00/0000");
+
+    $("#botao").click(function() {
+        let produto_id = $('#id').textContent
+        console.log(produto_id )
+
+        $("#inclusao").append(produto_id)
+        $("#inclusao").submit()
+    })
+    var ids_dos_produtos = {{ ids_dos_produtos }}
+
+    $("#ajax").on("click", "button.btn-remove", function() {
+        let form = $(this).parent();
+        let tr = $(form).parent().parent();
+        let ind = $(tr).index();
+        let valor_id = ids_dos_produtos[ind];
+        let input = "<input type='hidden' name='produto_id' value='" + valor_id + "'>";
+        $(form).append(input);
+        let url = $(form).attr('action')
+        let formData = $(form).serializeArray()
+        $.post(url, formData, function(resposta) {
+            $(tr).fadeTo('slow', 0.3, function() {
+                $(tr).remove()
+                ids_dos_produtos.splice(ind, 1)
+                $("#valor-do-estoque").text(resposta)
+            })
+        })
+    })
+
+    $("#ajax").on("blur", "input.estoque", function() {
+        if ($(this).val() <= 0) {
+            $(this).focus()
+            return
+        }
+        let form = $(this).parent();
+        let tr = $(form).parent().parent();
+        let ind = $(tr).index();
+        let valor_id = ids_dos_produtos[ind];
+        let input = "<input type='hidden' name='produto_id' value='" + valor_id + "'>";
+        $(form).append(input);
+        let url = $(form).attr('action')
+        let formData = $(form).serializeArray()
+        $.post(url, formData, function(resposta) {
+            $("#valor-do-estoque").text(resposta)
+        })
+    })
+
+        });
+</script>
+</body>
+</html>

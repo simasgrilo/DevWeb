@@ -1,0 +1,163 @@
+{% load filtros %}
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'produto/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/open-iconic/font/css/open-iconic-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/css/styles.css' %}">
+    <title>{% block titulo %}XVIDROS Vidraçaria{% endblock %}</title>
+</head>
+<body>
+
+<nav class="navbar ml-auto bg-light navbar-light navbar-expand-md fixed-top navbar-color">
+    <div class="container">
+            <a href="{% url 'index'%}">
+            <img src="{% static 'produto/images/logo2.png' %}" alt="logo" style="width: 80px;">
+            </a>
+            <div class="navbar navbar-nav "> <!-- mr-auto alinha à esquerda do container da nav-->
+                <a class="nav-color nav-item nav-link " href="{% url 'quem_somos'%}">Quem somos</a>
+                <a class="nav-color-black nav-item nav-link" href="{% url 'produtos' %}">Produtos</a>
+                <a class="nav-item nav-link nav-color" href="{% url 'pessoal' %}">Pessoal</a>
+                <a class="nav-item nav-link nav-color-black" href="{% url 'depoimentos' %}">Depoimentos</a>
+                <a class="nav-item nav-link nav-color" href="#contato">Contato</a>
+            </div>
+            <div>
+                <a class="nav-color nav-item nav-link oi oi-cart" href="{% url 'carrinho:exibe_produtos_e_carrinho'%}">Carrinho</a>
+            </div>
+    </div>
+</nav>
+
+<header style="margin-top: 55px;" class="d-none d-md-block"></header>
+<div class="container">
+    <div class="jumbotron fade-to-black">
+        <div><h2 id="marcos">Carrinho de Compras</h2>
+        <p>Aqui você pode selecionar os produtos que você deseja levar para casa! Antes de selecionar quais produtos você deseja,
+            confira no nosso <a href="{% url 'produtos' %}">portfólio</a> o que lhe interessa!
+        </p>
+
+        </div>
+    <br>
+    <div id="produtos">
+
+    </div>
+    <br>
+    <div id="carrinho">
+
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    </div>
+<script src="{% static 'produto/js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'produto/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'produto/js/jquery.mask.js' %}"></script>
+<script src="{% static 'produto/js/popper.js' %}"></script>
+<script src="{% static 'produto/js/bootstrap.js' %}"></script>
+<script src="{% static 'produto/js/script.js' %}"></script>
+ <script>
+     $(document).ready(function(){
+         {% block domready %}
+    var ids_dos_produtos = []
+    var ids_dos_produtos_no_carrinho = []
+    $("#produtos").ready(function() {
+        $.get('{% url 'carrinho:exibe_produtos' %}', function(resposta) {
+            $("#produtos").html(resposta)
+            console.log("xana")
+            console.log(resposta)
+        })
+        .done(function() {
+            let ids = $("#tbody1 td.id")
+            $.each( ids, function( i, val ) {
+                var id = parseInt($(val).text());
+                console.log("venda - id = " + id)
+                ids_dos_produtos.push(id)
+            })
+            console.log(ids_dos_produtos)
+        })
+        .fail(function(e) {
+            console.log("falhou")
+        })
+        .always(function() {
+            console.log("terminou")
+        })
+    })
+
+    $("#carrinho").ready(function() {
+        $.get('{% url 'carrinho:exibe_carrinho' %}', function(resultado) {
+            console.log("carrinho acabou")
+            console.log(resultado)
+            $("#carrinho").html(resultado)
+        })
+        .done(function() {
+            let ids = $("#tbody2 td.id")
+            $.each( ids, function( i, val ) {
+                var id = parseInt($(val).text());
+                console.log("carrinho - id = " + id)
+                ids_dos_produtos_no_carrinho.push(id)
+            })
+
+            console.log(ids_dos_produtos_no_carrinho)
+        })
+    })
+
+    var ids_dos_produtos_no_carrinho = []
+
+
+    $("#carrinho").on("click", "button.btn-remove", function() {
+        let form = $(this).parent();
+        let tr = $(form).parent().parent();
+        let ind = $(tr).index();
+        let valor_id = ids_dos_produtos_no_carrinho[ind];
+        let input = "<input type='hidden' name='produto_id' value='" + valor_id + "'>";
+        $(form).append(input);
+        let url = $(form).attr('action')
+        let formData = $(form).serializeArray()
+        $.post(url, formData, function(resposta) {
+            $("#carrinho").html($(resposta).html())
+
+            ids_dos_produtos_no_carrinho = recuperaIds(resposta)
+            console.log(ids_dos_produtos_no_carrinho)
+        })
+    })
+
+    $("#carrinho").on("blur", "input.estoque", function() {
+        let valor = $(this).val()
+        if (valor < 1 || valor > 1000) {
+            $(this).focus()
+            return
+        }
+        let form = $(this).parent()
+        let tr = $(form).parent().parent();
+        let ind = $(tr).index();
+        let valor_id = ids_dos_produtos_no_carrinho[ind];
+        $(form).append("<input type='hidden' name='produto_id' value='" + valor_id + "'>")
+        let url = $(form).attr('action')
+        let formData = $(form).serializeArray()
+        $.post(url, formData, function(resposta) {
+            $("#carrinho").html($(resposta).html())
+
+            ids_dos_produtos_no_carrinho = recuperaIds(resposta)
+            console.log(ids_dos_produtos_no_carrinho)
+        })
+    })
+
+    function recuperaIds(resposta) {
+        var ids = $(resposta).find("td.id")
+        var ids_dos_produtos_no_carrinho = []
+        $.each( ids, function( i, val ) {
+            var id = parseInt($(val).text());
+            ids_dos_produtos_no_carrinho.push(id)
+        })
+        return ids_dos_produtos_no_carrinho
+    }
+
+{% endblock %}
+     });
+    </script>
+
+</body>
+</html>

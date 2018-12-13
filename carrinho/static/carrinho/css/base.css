@@ -1,0 +1,47 @@
+.barra {
+    overflow-y: scroll;
+}
+
+.thumbnail {
+    border: 0px;
+}
+
+.id{
+
+}
+
+/*.btn-primary {*/
+    /*color: #fff;*/
+    /*background-color: #1c1c93 !important;*/
+    /*border-color: #1c1c93 !important;*/
+/*}*/
+
+.info {
+    border-style: solid;
+    border-width: 1px;
+    border-color: blue;
+}
+
+.error {
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+}
+
+#header {
+	font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+
+a {
+    color: #337ab7;
+}
+
+a.btn-primary, button.btn-primary {
+    background-color: #337ab7;
+}
+
+/* No boostrap o nível de opacidade dos links do menu é 0.5
+   Para ficar mais visível, mudei para 1 (totalmente visível) */
+.navbar-dark .navbar-nav .nav-link  {
+    color: rgba(255, 255, 255, 1) !Important;
+}

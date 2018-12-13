@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'produto/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/open-iconic/font/css/open-iconic-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/css/styles.css' %}">
+    <title>{% block titulo %}XVIDROS Vidraçaria{% endblock %}</title>
+</head>
+<body>
+<nav class="navbar ml-auto bg-light navbar-light navbar-expand-md fixed-top navbar-color">
+    <div class="container">
+        <a href="{% url 'index'%}">
+            <img src="{% static 'produto/images/logo2.png' %}" alt="logo" style="width: 80px;">
+        </a>
+            <div class="navbar navbar-nav "> <!-- mr-auto alinha à esquerda do container da nav-->
+                <a class="nav-color nav-item nav-link " href="{% url 'quem_somos'%}">Quem somos</a>
+                <a class="nav-color-black nav-item nav-link" href="{% url 'produtos' %}">Produtos</a>
+                <a class="nav-item nav-link nav-color" href="{% url 'pessoal' %}">Pessoal</a>
+                <a class="nav-item nav-link nav-color-black" href="{% url 'depoimentos' %}">Depoimentos</a>
+                <a class="nav-item nav-link nav-color" href="#contato">Contato</a>
+            </div>
+        <div>
+            <a class="nav-color nav-item nav-link oi oi-cart" href="{% url 'carrinho:exibe_produtos_e_carrinho'%}"> Carrinho</a>
+        </div>
+    </div>
+
+</nav>
+
+<div class="container fade-to-black">
+    <br>
+    <div class="jumbotron bg-danger">
+        <h2 id="marcos">XVIDROS</h2>
+        <h4>História</h4>
+        <span><p>A XVIDROS foi fundada em dezembro de 1983, quando os irmãos Tony Montana e Manny Ray Montana necessitavam de uma nova vitrine para a loja de roupas
+        da família na qual eles trabalhavam. Tony tinha apenas 15 anos e Manny, 18, porém, ambos os irmãos já eram visionàrios nessa época. Vendo a escassez no
+        mercado de vidros e a dificuldade que foi encontrada pelos irmãos de executar
+        a tarefa na região onde funcionava a loja, resolveram fundar a primeira vidraçaria no bairro do Porto Novo, em São Gonçalo.</p></span>
+
+        <p>O primeiro cliente dos irmãos Montana (onde a recém criada vidraçaria ainda não possuia nome) fora um amigo da família, que necessitava de um novo vidro para o box do chuveiro de sua casa
+        Os irmãos Montana não mediram esforços para entregar o melhor produto possível e assim assegurar um lugar de respeito em um merqado que àquela época era inexistente na região.
+        Buscaram as dicas e os produtos dos maiores vidraceiros na cidade do Rio de Janeiro, impressionando o seu primeiro cliente, que com o resultado,
+            recomendou o trabalho dos irmãos para seu irmão, que na época acabava de criar a indústria caseira de batatas que veio a se tornar a fábrica de batatas
+            <a class="dada" href="http://www.crac.com.br">Crac</a>, A <a class="dada" tabindex="0" data-trigger="focus"
+                                                            data-toggle="popover"
+                                                            data-title="A primeira fábrica de batata do mundo"
+                                                            data-placement="bottom"
+                                                            data-content="Conhecida em todo o estado do Rio de Janeiro, As famosas
+                                                            batatas Crac foram as pioneiras na criação de batatas palha em escala industrial no mundo todo.
+                                                            A XVIDROS foi responsável por instalar a vidraça interna em toda a administração do grupo CRAC."
+                                                            data->
+                primeira fábrica de batata palha do mundo</a></p>
+
+        <p>Desde então, a XVIDROS vidraçaria vêm sendo líder no mercado de vidraças em geral em São Gonçalo e na região metropolitana do rio de Janeiro, conquistando clientes como
+            o <a class="dada" href="https://www.bndes.gov.br/wps/portal/site/home">BNDES</a> e a <a class="dada" tabindex="0" data-trigger="focus"
+                                                                                            data-toggle="popover"
+                                                                                            data-title="Vidros blindados de casas lotéricas"
+                                                                                            data-placement="bottom"
+                                                                                            data-content="Quando você ver uma casa lotérica cujos guichês são blindados no centro
+                                                                                             de são gonçalo, você está vendo um produto XVIDROS."
+                                                                                            data->
+                Caixa Econômica Federal</a>, devido ao sucesso adquirido ao longo dos anos
+                com suas vidraças blindadas</p>
+    </div>
+    <br>
+    <br>
+    <div class="jumbotron bg-danger"> <!-- fade-in tá me deixando tonto -->
+        <h4>Desafios</h4>
+        <span><p>A XVIDROS foi fundada em dezembro de 1983, quando os irmãos Tony Montana e Manny Ray Montana necessitavam de uma nova vitrine para a loja de roupas
+        da família na qual eles trabalhavam. Tony tinha apenas 15 anos e Manny, 18, porém, ambos os irmãos já eram visionàrios nessa época. Vendo a escassez no
+        mercado de vidros e a dificuldade que foi encontrada pelos irmãos de executar
+        a tarefa na região onde funcionava a loja, resolveram fundar a primeira vidraçaria no bairro do Porto Novo, em São Gonçalo.</p></span>
+
+        <p>O primeiro cliente dos irmãos Montana (onde a recém criada vidraçaria ainda não possuia nome) fora um amigo da família, que necessitava de um novo vidro para o box do chuveiro de sua casa
+            Os irmãos Montana não mediram esforços para entregar o melhor produto possível e assim assegurar um lugar de respeito em um merqado que àquela época era inexistente na região.
+            Buscaram as dicas e os produtos dos maiores vidraceiros na cidade do Rio de Janeiro, impressionando o seu primeiro cliente, que com o resultado,
+            recomendou o trabalho dos irmãos para seu irmão, que na época acabava de criar a indústria caseira de batatas que veio a se tornar a fábrica de batatas
+            <a class="dada" href="http://www.crac.com.br">Crac</a>, A <a class="dada" tabindex="0" data-trigger="focus"
+                                                                         data-toggle="popover"
+                                                                         data-title="A primeira fábrica de batata do mundo"
+                                                                         data-placement="bottom"
+                                                                         data-content="Conhecida em todo o estado do Rio de Janeiro, As famosas
+                                                            batatas Crac foram as pioneiras na criação de batatas palha em escala industrial no mundo todo.
+                                                            A XVIDROS foi responsável por instalar a vidraça interna em toda a administração do grupo CRAC."
+                                                                         data->
+                primeira fábrica de batata palha do mundo</a></p>
+
+        <p>Desde então, a XVIDROS vidraçaria vêm sendo líder no mercado de vidraças em geral em São Gonçalo e na região metropolitana do rio de Janeiro, conquistando clientes como
+            o <a class="dada" href="https://www.bndes.gov.br/wps/portal/site/home">BNDES</a> e a <a class="dada" tabindex="0" data-trigger="focus"
+                                                                                                    data-toggle="popover"
+                                                                                                    data-title="Vidros blindados de casas lotéricas"
+                                                                                                    data-placement="bottom"
+                                                                                                    data-content="Quando você ver uma casa lotérica cujos guichês são blindados no centro
+                                                                                             de são gonçalo, você está vendo um produto XVIDROS."
+                                                                                                    data->
+                Caixa Econômica Federal</a>, devido ao sucesso adquirido ao longo dos anos
+            com suas vidraças blindadas</p>
+    </div>
+</div>
+<div class='footer'>
+    <div class='container'>
+        <div class="row">
+            <div id="contato" class='col-md-3 col-sm-6'>
+                <h4>Contato</h4>
+                <p>Sugestões e dúvidas? Fale com nossos representantes</p>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-person"></span> Gina Souza</li>
+                    <li><span class="oi oi-phone"></span> (69) 98657-6582</li>
+                    <li><span class="oi oi-envelope-closed"></span> <a href='mailto:gsouza@xvidros.com.br'>gsouza@xvidros.com.br</a></li>
+                    <li><span class="oi oi-badge"></span> Gerente de vendas</li></li>
+                </ul>
+                <ul class='list-unstyled' > <!-- O elemento HTML span é um conteiner generico em linha para conteúdo fraseado , que não representa nada por natureza
+                                          (sem estilo próprio, sendo necessário uma classe para acompanhá-lo) -->
+                    <li><span class="oi oi-person"></span> Tony Montana</li>
+                    <li><span class="oi oi-phone"></span> (69) 91983-1209</li>
+                    <li><span class="oi oi-envelope-closed"></span> <a href='mailto:tmontana@xvidros.com.br'>tmontana@xvidros.com.br</a></li>
+                    <li><span class="oi oi-badge"> Diretor geral</span></li>
+                </ul>
+            </div>
+
+            <div id="endereco" class='col-md-3 col-sm-6'>
+                <h4>Localização e funcionamento</h4>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-bookmark"></span> Rua Abílio José de Mattos, 1130, Porto da Pedra - São Gonçalo, RJ</li>
+                    <li><span class="oi oi-terminal"></span> Funcionamos de 9 às 18, de segunda a sexta;
+                        <p>9 às 14 aos sábados.</p></li>
+                </ul>
+            </div>
+            <div id="vendas" class='col-md-3 col-sm-6'>
+                <h4>Agendamento de serviços e vendas</h4>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-phone"></span> (69) 3754-8898</li>
+                    <li><span class="oi oi-envelope-closed"></span> vendas@xvidros.com</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

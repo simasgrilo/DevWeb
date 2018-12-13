@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'produto/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/open-iconic/font/css/open-iconic-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/css/styles.css' %}">
+    <title>{% block titulo %}XVIDROS Vidraçaria{% endblock %}</title>
+</head>
+<body>
+
+<nav class="navbar ml-auto bg-light navbar-light navbar-expand-md fixed-top navbar-color">
+    <div class="container">
+            <a href="{% url 'index'%}">
+            <img src="{% static 'produto/images/logo2.png' %}" alt="logo" style="width: 80px;">
+            </a>
+            <div class="navbar navbar-nav "> <!-- mr-auto alinha à esquerda do container da nav-->
+                <a class="nav-color nav-item nav-link " href="{% url 'quem_somos'%}">Quem somos</a>
+                <a class="nav-color-black nav-item nav-link" href="{% url 'produtos' %}">Produtos</a>
+                <a class="nav-item nav-link nav-color" href="{% url 'pessoal' %}">Pessoal</a>
+                <a class="nav-item nav-link nav-color-black" href="{% url 'depoimentos' %}">Depoimentos</a>
+                <a class="nav-item nav-link nav-color" href="#contato">Contato</a>
+            </div>
+            <div>
+                <a class="nav-color nav-item nav-link oi oi-cart" href="{% url 'carrinho:exibe_produtos_e_carrinho'%}"> Carrinho</a>
+
+            </div>
+
+    </div>
+</nav>
+
+<header style="margin-top: 55px;" class="d-none d-md-block"></header>

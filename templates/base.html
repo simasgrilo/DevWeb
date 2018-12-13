@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'produto/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/open-iconic/font/css/open-iconic-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/css/styles.css' %}">
+    <title>{% block titulo %}XVIDROS Vidraçaria{% endblock %}</title>
+</head>
+<body>
+
+<nav class="navbar ml-auto bg-light navbar-light navbar-expand-md fixed-top navbar-color">
+    <div class="container">
+            <a href="{% url 'index'%}">
+            <img src="{% static 'produto/images/logo2.png' %}" alt="logo" style="width: 80px;">
+            </a>
+            <div class="navbar navbar-nav "> <!-- mr-auto alinha à esquerda do container da nav-->
+                <a class="nav-color nav-item nav-link " href="{% url 'quem_somos'%}">Quem somos</a>
+                <a class="nav-color-black nav-item nav-link" href="{% url 'produtos' %}">Produtos</a>
+                <a class="nav-item nav-link nav-color" href="{% url 'pessoal' %}">Pessoal</a>
+                <a class="nav-item nav-link nav-color-black" href="{% url 'depoimentos' %}">Depoimentos</a>
+                <a class="nav-item nav-link nav-color" href="#contato">Contato</a>
+            </div>
+            <div>
+                <a class="nav-color nav-item nav-link oi oi-cart" href="{% url 'carrinho:exibe_produtos_e_carrinho'%}"> Carrinho</a>
+
+            </div>
+
+    </div>
+</nav>
+
+<header style="margin-top: 55px;" class="d-none d-md-block"></header>
+
+<div style="margin-top: 55px;" class="d-block d-md-none"></div>
+
+<div class="container">
+    <div class="jumbotron bg-danger fade-to-black">
+        <h2 id="marcos">XVIDROS</h2>
+        <p>A XVIDROS vidraçaria é uma das líderes do ramo de vidraças e vitrais em geral no mercado. Com ampla especialização
+            de vidros comerciais, industriais e blindados, a XVIDROS ainda oferece uma ampla cobertura para os mais variados
+            vidros domésticos, seja para sua sala de estar, banheiro ou até mesmo jardim de inverno!</p>
+
+        <p>Além de qualidade e preço justo, todos os itens fornecidos pela XVIDROS possuem garantia inicial de até três anos, onde tal plano pode ser extendido para qualquer
+            produto adquirido. </p>
+    </div>
+
+
+    <div id="accordion">
+        <div class="card bg-danger fade-to-black"> <!-- remover o card zoa tudo-->
+            <ul class=" header">
+                <h2 class="bg-danger">
+                    Nossos produtos
+                </h2>
+                <li class="list-group-item">
+                    <div class="card-img"><img class="imgAbt" src="{% static 'produto/images/vidroComum.jpg' %}"></div>
+
+                    <span class="texto-media-body">Vidros comuns: Lisos nas espessuras de 02 a 19 mm e os fantasias 04 mm nas cores incolor, verde, fumê e bronze. Podem ser instalados em esquadrias  de ferro, madeira ou alumínio, sendo obras novas ou em reposições. É próprio para ser utilizado em janelas simples, porta-retratos, prateleiras, tampos de mesas, aparadores e bases. Pode ser lapidado, bizotado, jateado ou pintado.
+Apresenta características fracas quanto a sua qualidade, sua resistência mecânica baixa permite que seja cortado com facilidade, da mesma forma apresenta fragilidade à quebra.
+Seus pedaços após eventual quebra são altamente cortantes e pontiagudos, motivos que o fazem ser um material de baixo custo.</span>
+         </li>
+                <li class="list-group-item">
+                    <div class="card-img"><img class="imgAbt" src="{%  static 'produto/images/vidroLaminado.jpg' %}"></div><span class="texto-media-body">
+                    Vidros Laminados: O Vidro laminado é composto por duas ou mais chapas de Vidro intercaladas com uma ou mais películas de material plástico denominado Polivinil Butiral (PVB) unidas
+                    através de um processo de pressão e calor. Vidro laminado é um tipo de vidro de segurança que mantém em conjunto os estilhaços quando quebrado. No momento da quebra, os estilhaços ficam presos
+                    nesta camada intermediária. Esta característica produz efeito de uma “teia de aranha” quando o impacto não é totalmente suficiente para furar o vidro. Trabalha também para vedar o som.
+                    Utilizado na construção civil (coberturas, fachadas, sacadas, portas, janelas, divisórias e vitrines) é normalmente utilizado quando existe uma possibilidade de impacto humano, como em pára-brisas
+                    de automóveis, onde se deseja ter maior segurança, também em janelas, vitrines ou onde não pode cair o vidro quebrado, no caso claraboias e corrimãos.</span>
+                </li>
+                <li class="list-group-item">
+                    <div class="card-img"><img class="imgAbt" src="{% static 'produto/images/vidroReflexivo.jpg' %}"></div><span class="texto-media-body">
+                    Vidros refletivos: Consiste em um vidro laminado com PVB refletivo ou um vidro comum com aplicação de película refletiva. Os vidros refletivos reduzem em até 70% do calor nos ambientes e até 99% dos raios
+                    UV  garatindo mais conforto e bem estar a seus usuários, além da economia de energia.
+                    ode ser utilizado de diversas formas e sua composição proporciona um efeito visual diferenciado e sofisticado. Sendo muito utilizado em fachadas prediais e  principalmente em ambientes onde necessite privacidade ou
+                    controle de raios solares. </span>
+                </li>
+                <li class="list-group-item">
+                    <div class="card-img"><img class="imgAbt" src="{% static 'produto/images/vidroTemperado.jpg' %}"></div><span class="texto-media-body">
+                    Vidros temperados: Produzido a partir do vidro comum submetido a um choque térmico, onde o mesmo passa por um processo de aquecimento e resfriamento rápido, tornando-o mais resistente à quebra por impacto.
+                    O vidro temperado é mais rígido, tem maior resistência térmica e se estilhaça em pequenos fragmentos quando é danificado. Pode ser jateado ou serigrafado, suas características o tornam menos susceptível a
+                    causar ferimentos graves ao se estilhaçar, mostrando grande utilidade quando a segurança é uma questão a ser considerada. Atualmente ele é utilizado nas fachadas, portas, janelas residenciais, vitrines em geral,
+                    fechamentos mobiliários, janelas laterais e traseiras dos automóveis, guarda corpo, além da maioria dos utensílios de cozinha
+                    como panelas, pratos e alguns copos também são feitos com vidro temperado. Por sua grande resistência e baixa probabilidade de ferimentos ele é utilizado nas maiorias das aplicações em que possa ocorrer
+                    sua quebra por manuseio ou contato humano.</span>
+                </li>
+                <li class="list-group-item">
+                    <div class="card-img"><img class="imgAbt" src="{% static 'produto/images/vidroAramado.jpg'%}"></div><span class="texto-media-body">
+                    Vidros aramados: O vidro é fabricado com uma tela de arame embebida, com a finalidade de aumentar sua resistência e conceder maior proteção para seus usuários.
+                    Considerado um vidro de segurança, o aramado é um impresso translúcido que possui uma rede metálica de malha quadriculada incorporada à massa do vidro. A rede metálica incorporada ao vidro tem como
+                    função principal segurar os estilhaços de vidro na hora do rompimento da placa. Ou seja, em caso de quebra, o vidro fica preso à rede metálica, deixando o vão indevassável até sua substituição,
+                    reduzindo os riscos de ferimentos no momento da quebra. Por ser translúcido, proporciona privacidade e estética ao projeto, ampliando o conceito de iluminação e requinte (possui efeito decorativo). Além disso, o aramado possui excepcionais índices de
+                    resistência ao fogo, prevenindo assim, o ambiente da passagem de chamas e fumaças. Utilizado em caixas de escada, coberturas, fechamentos de claraboias, sacadas, peitoris, tampos de balcões,
+                    composição de móveis, divisórias e guarda-corpos. </span>
+                </li>
+            </ul>
+        </div>
+        </div>
+</div>
+<br>
+<br>
+<div class='footer'>
+    <div class='container'>
+        <div class="row">
+            <div id="contato" class='col-md-3 col-sm-6'>
+                <h4>Contato</h4>
+                <p>Sugestões e dúvidas? Fale com nossos representantes</p>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-person"></span> Gina Souza</li>
+                    <li><span class="oi oi-phone"></span> (69) 98657-6582</li>
+                    <li><span class="oi oi-envelope-closed"></span> <a href='mailto:gsouza@xvidros.com.br'>gsouza@xvidros.com.br</a></li>
+                    <li><span class="oi oi-badge"></span> Gerente de vendas</li></li>
+                </ul>
+                    <ul class='list-unstyled' > <!-- O elemento HTML span é um conteiner generico em linha para conteúdo fraseado , que não representa nada por natureza
+                                          (sem estilo próprio, sendo necessário uma classe para acompanhá-lo) -->
+                        <li><span class="oi oi-person"></span> Tony Montana</li>
+                        <li><span class="oi oi-phone"></span> (69) 91983-1209</li>
+                        <li><span class="oi oi-envelope-closed"></span> <a href='mailto:tmontana@xvidros.com.br'>tmontana@xvidros.com.br</a></li>
+                        <li><span class="oi oi-badge"> Diretor geral</span></li>
+                    </ul>
+            </div>
+
+    <div id="endereco" class='col-md-3 col-sm-6'>
+        <h4>Localização e funcionamento</h4>
+        <ul class='list-unstyled'>
+            <li><span class="oi oi-bookmark"></span> Rua Abílio José de Mattos, 1130, Porto da Pedra - São Gonçalo, RJ</li>
+            <li><span class="oi oi-terminal"></span> Funcionamos de 9 às 18, de segunda a sexta;
+            <p>9 às 14 aos sábados.</p></li>
+        </ul>
+    </div>
+            <div id="vendas" class='col-md-3 col-sm-6'>
+                <h4>Agendamento de serviços e vendas</h4>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-phone"></span> (69) 3754-8898</li>
+                    <li><span class="oi oi-envelope-closed"></span> vendas@xvidros.com</li>
+                </ul>
+            </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<script src="{% static 'produto/js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'produto/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'produto/js/jquery.mask.js' %}"></script>
+<script src="{% static 'produto/js/popper.js' %}"></script>
+<script src="{% static 'produto/js/bootstrap.js' %}"></script>
+<script src="{% static 'produto/js/script.js' %}"></script>
+ <script>
+     $(document).ready(function(){
+         {% block domready %}
+         {% endblock %}
+     });
+    </script>
+
+</body>
+</html>

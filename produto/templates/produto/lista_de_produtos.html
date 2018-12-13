@@ -1,0 +1,75 @@
+{% load static %}
+{% load filtros %}
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table id="tabela" style="width:100%" class="table table-striped table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Número</th>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">Preço</th>
+                        <th class="text-center">Estoque</th>
+                        <th class="text-center">Disponível</th>
+                        <th class="text-center">Unidades</th>
+                        <th class="text-center">Remover</th>
+                        <th class="text-center">Alterar</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    {% for item in lista_de_produtos %}
+                        <tr>
+                            <td width="10%" class="text-center">
+                                {{ item.produto.id }}
+                            </td>
+                            <td width="35%">
+                                {{ item.produto.nome }}
+                            </td>
+                            <td width="15%" class="text-center">
+                                {{ item.produto.preco }}
+                            </td>
+                            <td width="15%" class="text-center">
+                                <form style="width: 60px;" class="mx-auto" action ="{% url 'produto:atualiza_produto' item.produto.id %}" method ="POST" novalidate>
+                                    {% csrf_token %}
+                                    {{ item.form.estoque }}
+                                </form>
+                            </td>
+                            <td width="15%" class="text-center">
+                                {% if item.produto.disponivel %} Sim {% else %} Não {% endif %}
+                            </td>
+                            <td width="15%" class="text-center">
+                                {{  item.produto.estoque }}
+                            </td>
+                            <td width="10%" class="text-center">
+                                <form style="margin-bottom: 0px;"
+                                      action ="{% url 'produto:remove_produto' %}"
+                                      method ="post" novalidate>
+                                    {% csrf_token %}
+                                    <button style="margin-top: 0px; margin-bottom: 0px; padding-top: 3px; padding-bottom: 3px;"
+                                            type="button" class="btn btn-sm btn-danger btn-remove" > <!--{% if item.produto.user != request.user %} disabled="disabled" {% endif %} -->
+                                        <img src="{% static 'produto/images/skin/database_delete.png' %}">
+                                        Remover
+                                    </button>
+                                </form>
+                            </td>
+                        <td width="10%" class="text-center">
+                            <a id="botao_editar" style="margin-right: 15px;" href="{% url 'produto:atualiza_produto' item.produto.id %}" style="margin-top: 0px" class="btn btn-primary">
+                                <img src="{% static 'produto/images/skin/database_edit.png' %}"/>
+                                Editar
+                            </a>
+                        </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="5" width="90%" class="text-left">
+                            <strong style="margin-left: 10px;">Total do estoque ...</strong>
+                        </td>
+                        <td width="10%" class="text-right">
+                            <strong id="valor-do-estoque">{{ valor_do_estoque|separador_de_milhar }}</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

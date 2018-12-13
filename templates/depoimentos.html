@@ -1,0 +1,132 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'produto/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/open-iconic/font/css/open-iconic-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/css/styles.css' %}">
+    <title>{% block titulo %}XVIDROS Vidraçaria{% endblock %}</title>
+</head>
+<body>
+<nav class="navbar ml-auto bg-light navbar-light navbar-expand-md fixed-top navbar-color">
+    <div class="container">
+            <a href="{% url 'index'%}">
+            <img src="{% static 'produto/images/logo2.png' %}" alt="logo" style="width: 80px;">
+            </a>
+            <div class="navbar navbar-nav "> <!-- mr-auto alinha à esquerda do container da nav-->
+                <a class="nav-color nav-item nav-link " href="{% url 'quem_somos'%}">Quem somos</a>
+                <a class="nav-color-black nav-item nav-link" href="{% url 'produtos' %}">Produtos</a>
+                <a class="nav-item nav-link nav-color" href="{% url 'pessoal' %}">Pessoal</a>
+                <a class="nav-item nav-link nav-color-black" href="{% url 'depoimentos' %}">Depoimentos</a>
+                <a class="nav-item nav-link nav-color" href="#contato">Contato</a>
+            </div>
+            <div>
+                <a class="nav-color nav-item nav-link oi oi-cart" href="{% url 'carrinho:exibe_produtos_e_carrinho'%}"> Carrinho</a>
+            </div>
+    </div>
+</nav>
+
+
+<div class="container">
+<div class="jumbotron bg-dark letra-white fade-to-black">
+    <h2>Depoimentos</h2>
+    <p>Nossos clientes mais satisfeitos deixam a impressão que a XVIDROS passa para seus clientes:</p></div>
+
+<!-- <div class="container jumbotron"> -->
+<div id="carouselExampleIndicators" class="carousel slide fade-to-black" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100 media" src="{% static 'produto/images/cracLogo.png' %}" alt="First slide">
+            <div style="color:black" class="carousel-caption ">
+                <h3>"Respeito e eficiência"</h3>
+                <p>"a XVIDROS é uma de nossas melhores parceiras. Quando qualquer um dos produtos adquiridos por nós com eles sofre algum dano, em pouco tempo eles resolvem
+                    o problema de forma muito eficiente e com um preço justo". --  Carlos Aníbal Cerqueira, Diretor executivo do grupo CRAC</p>
+            </div>
+        </div>
+        <div class="carousel-item ">
+            <img class="d-block w-100 media" src="{% static 'produto/images/bndes.png' %}">
+            <div style="color:black" class="carousel-caption ">
+                <h3>"Uma palavra: qualidade"</h3>
+                <p>é o que tem a dizer o diretor executivo da AARH do BNDES, José Luiz Hildebrand de Nogueira. Para ele, o contrato de restauração da vidraçaria interna do 5º andar do BNDES, ocorrido em junho de 2018, foi uma das poucas licitações
+                que o banco não teve nenhum problema e que o serviço foi executado de forma eficiente e dentro do preço - "Não é algo comum de se ver no âmbito de licitação quando se trata de um órgão federal", completa.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100 media" src="{% static 'produto/images/caixa.png' %}">
+            <div style="color:black" class="carousel-caption ">
+                <h3>"Serviço melhor é difícil de encontrar"</h3>
+                <p>A Caixa Econômica Federal afirma ter tido sorte em encontrar a XVIDROS em São Gonçalo. Frente à crise de violência no estado, muitos donos de casas lotéricas reclamavam de constantes assaltos á lotéricas à CEF, que por sua vez
+                    afirmava que não tinha muito o que fazer. Para os donos de lotéricas de São Gonçalo, o paliativo do problema foi encontrado nos vidros blindados com tecnologia adquidirida pelo Sr. Montana em uma viagem ocorrida na década de 90 (responsável pelo sucesso da XVIDROS em especial no segmento de vidros
+                    blindados). "A gente teve sorte da XVIDROS ter encontrado o anúncio pra audiência. Graças à eles, os índices á assaltos caíram, mas o principal é que eles cumprem o serviço dentro do orçamento, do prazo e com uma eficiência de invejar", declara
+                    o diretor de relações públicas da divisão da Loteria Federal, Pepeu Gomes.</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    </div>
+</div>
+
+
+<div class='footer'>
+    <div class='container'>
+        <div class="row">
+            <div id="contato" class='col-md-3 col-sm-6'>
+                <h4>Contato</h4>
+                <p>Sugestões e dúvidas? Fale com nossos representantes</p>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-person"></span> Gina Souza</li>
+                    <li><span class="oi oi-phone"></span> (69) 98657-6582</li>
+                    <li><span class="oi oi-envelope-closed"></span> <a href='mailto:gsouza@xvidros.com.br'>gsouza@xvidros.com.br</a></li>
+                    <li><span class="oi oi-badge"></span> Gerente de vendas</li></li>
+            </ul>
+                <ul class='list-unstyled' > <!-- O elemento HTML span é um conteiner generico em linha para conteúdo fraseado , que não representa nada por natureza
+                                          (sem estilo próprio, sendo necessário uma classe para acompanhá-lo) -->
+                    <li><span class="oi oi-person"></span> Tony Montana</li>
+                    <li><span class="oi oi-phone"></span> (69) 91983-1209</li>
+                    <li><span class="oi oi-envelope-closed"></span> <a href='mailto:tmontana@xvidros.com.br'>tmontana@xvidros.com.br</a></li>
+                    <li><span class="oi oi-badge"> Diretor geral</span></li>
+                </ul>
+            </div>
+
+            <div id="endereco" class='col-md-3 col-sm-6'>
+                <h4>Localização e funcionamento</h4>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-bookmark"></span> Rua Abílio José de Mattos, 1130, Porto da Pedra - São Gonçalo, RJ</li>
+                    <li><span class="oi oi-terminal"></span> Funcionamos de 9 às 18, de segunda a sexta;
+                        <p>9 às 14 aos sábados.</p></li>
+                </ul>
+            </div>
+            <div id="vendas" class='col-md-3 col-sm-6'>
+                <h4>Agendamento de serviços e vendas</h4>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-phone"></span> (69) 3754-8898</li>
+                    <li><span class="oi oi-envelope-closed"></span><a href='mailto:vendasx@xvidros.com.br'>vendas@xvidros.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

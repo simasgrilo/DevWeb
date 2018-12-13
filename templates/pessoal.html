@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'produto/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/open-iconic/font/css/open-iconic-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'produto/css/styles.css' %}">
+    <title>{% block titulo %}XVIDROS Vidraçaria{% endblock %}</title>
+</head>
+<body>
+<nav class="navbar ml-auto bg-light navbar-light navbar-expand-md fixed-top navbar-color">
+    <div class="container">
+        <a href="{% url 'index'%}">
+            <img src="{% static 'produto/images/logo2.png' %}" alt="logo" style="width: 80px;">
+        </a>
+            <div class="navbar navbar-nav "> <!-- mr-auto alinha à esquerda do container da nav-->
+                <a class="nav-color nav-item nav-link " href="{% url 'quem_somos'%}">Quem somos</a>
+                <a class="nav-color-black nav-item nav-link" href="{% url 'produtos' %}">Produtos</a>
+                <a class="nav-item nav-link nav-color" href="{% url 'pessoal' %}">Pessoal</a>
+                <a class="nav-item nav-link nav-color-black" href="{% url 'depoimentos' %}">Depoimentos</a>
+                <a class="nav-item nav-link nav-color" href="#contato">Contato</a>
+            </div>
+        <div>
+            <a class="nav-color nav-item nav-link oi oi-cart" href="{% url 'carrinho:exibe_produtos_e_carrinho'%}"> Carrinho</a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="jumbotron bg-danger fade-to-black">
+        <h2>Pessoal</h2>
+        <p>a XVIDROS sempre trabalha em prol de fornecer a melhor solução possível para seus clientes, aplicando em seu modelo de negócio
+            as tendências trazidas com a globalização e a expansão do mercado das vidraçarias. </p>
+
+        <p>Além de um portfólio de excelência, o serviço de qualidade prestado pela XVIDROS não poderia ser efetuado sem a pesença de seus ilustres funcionários:</p></div>
+
+    <!-- Table contendo os serviços prestados pela XVIDEOS-->
+    <div class="table-responsive jumbotron fade-to-black ">
+        <h4>Chefia</h4>
+        <table id="tab1" style="width: 99%" class="table table-striped table-sm table-bordered">
+            <thead>
+            <tr>
+                <th class="text-center">Foto</th>
+                <th class="text-center">Nome</th>
+                <th class="text-center">Descrição</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for pessoa in pessoal %}
+            <tr>
+                <td width='25%' class='text-center'><img class='' src='{{ pessoa.foto }}'></td>
+                <td width='25%' class='text-left'>{{ pessoa.nome }}</td>
+                <td width='50%' class='text-left'>{{ pessoa.descricao }}</td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class='footer'>
+    <div class='container'>
+        <div class="row">
+            <div id="contato" class='col-md-3 col-sm-6'>
+                <h4>Contato</h4>
+                <p>Sugestões e dúvidas? Fale com nossos representantes</p>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-person"></span> Gina Souza</li>
+                    <li><span class="oi oi-phone"></span> (69) 98657-6582</li>
+                    <li><span class="oi oi-envelope-closed"></span> <a href='mailto:gsouza@xvidros.com.br'>gsouza@xvidros.com.br</a></li>
+                    <li><span class="oi oi-badge"></span> Gerente de vendas</li></li>
+                </ul>
+                <ul class='list-unstyled' > <!-- O elemento HTML span é um conteiner generico em linha para conteúdo fraseado , que não representa nada por natureza
+                                          (sem estilo próprio, sendo necessário uma classe para acompanhá-lo) -->
+                    <li><span class="oi oi-person"></span> Tony Montana</li>
+                    <li><span class="oi oi-phone"></span> (69) 91983-1209</li>
+                    <li><span class="oi oi-envelope-closed"></span> <a href='mailto:tmontana@xvidros.com.br'>tmontana@xvidros.com.br</a></li>
+                    <li><span class="oi oi-badge"> Diretor geral</span></li>
+                </ul>
+            </div>
+
+            <div id="endereco" class='col-md-3 col-sm-6'>
+                <h4>Localização e funcionamento</h4>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-bookmark"></span> Rua Abílio José de Mattos, 1130, Porto da Pedra - São Gonçalo, RJ</li>
+                    <li><span class="oi oi-terminal"></span> Funcionamos de 9 às 18, de segunda a sexta;
+                        <p>9 às 14 aos sábados.</p></li>
+                </ul>
+            </div>
+            <div id="vendas" class='col-md-3 col-sm-6'>
+                <h4>Agendamento de serviços e vendas</h4>
+                <ul class='list-unstyled'>
+                    <li><span class="oi oi-phone"></span> (69) 3754-8898</li>
+                    <li><span class="oi oi-envelope-closed"></span><a href='mailto:vendas@xvidros.com.br'> vendas@xvidros.com</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+<script src="{% static 'produto/js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'produto/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'produto/js/jquery.mask.js' %}"></script>
+<script src="{% static 'produto/js/popper.js' %}"></script>
+<script src="{% static 'produto/js/bootstrap.js' %}"></script>
+<script src="{% static 'produto/js/script.js' %}"></script>
+
+</body>
+</html>
